@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:05:49 by walnaimi          #+#    #+#             */
-/*   Updated: 2023/11/27 17:16:20 by walnaimi         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:14:14 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,28 @@ static int	ft_printing(const char *s, va_list *ap)
 int	ft_printf(const char *s, ...)
 {
 	va_list	ap;
-	int		c_count;
-	int		c_sum;
+	int		char_count;
+	int		char_sum;
 	int		i;
 
 	i = 0;
-	c_sum = 0;
+	char_sum = 0;
 	va_start(ap, s);
 	while (s[i])
 	{
-		c_count = 0;
+		char_count = 0;
 		if (s[i] != '%')
-			c_count += write(1, &s[i], 1);
+			char_count += write(1, &s[i], 1);
 		else
-			c_count += ft_printing(&s[i++], &ap);
-		if (c_count < 0)
+			char_count += ft_printing(&s[i++], &ap);
+		if (char_count < 0)
 		{
 			va_end(ap);
 			return (-1);
 		}
-		c_sum += c_count;
+		char_sum += char_count;
 		i++;
 	}
 	va_end(ap);
-	return (c_sum);
+	return (char_sum);
 }
