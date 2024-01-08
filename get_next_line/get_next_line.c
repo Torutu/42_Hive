@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:03:33 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/01/07 17:32:06 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:37:31 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,85 +16,108 @@
 #include <unistd.h>
 #include <string.h>
 #include "get_next_line.h"
-size_t	ft_strlen(const char *str)
+char	*ft_read(int fd, char *str)
 {
-	int	i;
+	int bytes;
+	char buff[BUFFER_SIZE + 1];
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-char	*ft_strchr(const char *s, int c)
-{
-	int		i;
-	char	*str;
-	char	ch;
-
-	str = (char *)s;
-	ch = (char)c;
-	i = 0;
-	while (str[i] != ch)
+	bytes = 1;
+	while (!ft_strchr(str,'\n') && bytes != 0)
 	{
-		if (str[i] == '\0')
-			return (0);
-		i++;
-	}
-	return (&str[i]);
-}
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	int		i;
-	int		len1;
-	int		len2;
-	char	*dest;
-
-	if (s1 && s2)
-	{
-		len1 = ft_strlen(s1);
-		len2 = ft_strlen(s2);
-		dest = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-		if (dest == NULL)
-			return (NULL);
-		i = -1;
-		while (s1[++i])
-			dest[i] = s1[i];
-		i = -1;
-		while (s2[++i])
+		bytes = read(fd, buff, BUFFER_SIZE);
+		if (bytes == -1)
 		{
-			dest[len1] = s2[i];
-			len1++;
+			return NULL;
 		}
-		dest[len1] = '\0';
-		return (dest);
+		buff[bytes] = '\0';
+		str = ft_strjoin(str, buff);
 	}
-	return (NULL);
+	return (str);
+}
+char	*ft_rhyme(char *s)
+{
+	int		 i;
+	char	*rhyme;
+
+	i = 0;
+	if (!s[i])
+		return (NULL);;
+	while (s[i])
+	{
+		if (s[i] == '\n')
+		{
+			i++;
+			break ;
+		}
+		i++;
+	}
+	rhyme = malloc(i + 1);
+	if (!rhyme)
+		return (NULL);
+	rhyme[i--] = 0;
+	while (i >= 0)
+	{
+		rhyme[i] = s[i];
+		i--;
+	}
+	return (rhyme);
+}
+char	*next_rhyme(char *str)
+{
+	ssize_t i;
+	ssize_t j;
+	char   *s;
+
+	i = 0;
+	j = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (!str[i])
+	{
+		free(str);
+		return (NULL);
+	}
+	s = malloc(ft_strlen(str) - i + 1);
+	if (!s)
+		return NULL;
+	i++;
+	while (str[i])
+		s[j++] = str[i++];
+	s[j] = '\0';
+	free (str);
+	return (s);
 }
 char *get_next_line(int fd)
 {
-    static char buff[BUFFER_SIZE+1];
-    char        *str;
-    int         bytesRead;
-
-    if (fd < 0 || BUFFER_SIZE <= 0)
-        return(NULL);
-    while(bytesRead)
-    {
-		bytesRead = read(fd, buff, BUFFER_SIZE);
-        buff[bytesRead] = '\0';
-        str = ft_strjoin(str, buff);
-    }
-    
-    return str;
+    static char        *str;
+	char 				*c;
+	
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return(NULL);
+	str = ft_read(fd, str);
+	if (!str)
+		return (NULL);
+	c = ft_rhyme(str);
+	str = next_rhyme(str);
+	return (c);
 }
+/*
 int main()
 {
     int fd;
 
     fd = open("text.txt", O_RDONLY);
-    printf("%s.\n",get_next_line(fd));
+    char *line = get_next_line(fd);
+    
+    while (line)
+    {
+        printf("%s", line);
+        free(line);
+        line = get_next_line(fd);
+    }
 
     close(fd);
 
     return 0;
 }
+*/
