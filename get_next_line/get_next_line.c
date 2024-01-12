@@ -6,118 +6,89 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:03:33 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/01/08 15:37:31 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/01/12 21:40:08 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
 #include "get_next_line.h"
-char	*ft_read(int fd, char *str)
-{
-	int bytes;
-	char buff[BUFFER_SIZE + 1];
 
-	bytes = 1;
-	while (!ft_strchr(str,'\n') && bytes != 0)
-	{
-		bytes = read(fd, buff, BUFFER_SIZE);
-		if (bytes == -1)
-		{
-			return NULL;
-		}
-		buff[bytes] = '\0';
-		str = ft_strjoin(str, buff);
-	}
-	return (str);
-}
-char	*ft_rhyme(char *s)
+static char	*strchr_n_split(char *stock_buff)
 {
-	int		 i;
-	char	*rhyme;
+	char	*line;
+	int		i;
 
 	i = 0;
-	if (!s[i])
-		return (NULL);;
-	while (s[i])
-	{
-		if (s[i] == '\n')
-		{
-			i++;
-			break ;
-		}
-		i++;
-	}
-	rhyme = malloc(i + 1);
-	if (!rhyme)
+	while (stock_buff[i] != '\0' && stock_buff[i++] != '\n')
+		;
+	if (stock_buff[i] == '\0')
+		return (ft_strdup(stock_buff));
+	line = malloc(i + 1);
+	if (!line)
 		return (NULL);
-	rhyme[i--] = 0;
-	while (i >= 0)
-	{
-		rhyme[i] = s[i];
-		i--;
-	}
-	return (rhyme);
-}
-char	*next_rhyme(char *str)
-{
-	ssize_t i;
-	ssize_t j;
-	char   *s;
-
 	i = 0;
-	j = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (!str[i])
+	while (stock_buff[i] != '\n' && stock_buff[i] != '\0')
 	{
-		free(str);
-		return (NULL);
+		line[i] = stock_buff[i];
+		i++;
+		if (stock_buff[i] == '\n')
+			line[i] = stock_buff[i];
 	}
-	s = malloc(ft_strlen(str) - i + 1);
-	if (!s)
-		return NULL;
-	i++;
-	while (str[i])
-		s[j++] = str[i++];
-	s[j] = '\0';
-	free (str);
-	return (s);
+	if (stock_buff[i] == '\n')
+		line[i] = stock_buff[i];
+	line[++i] = '\0';
+	return (line);
 }
-char *get_next_line(int fd)
+
+static char	*get_line(int fd, char *stock_buff, char *read_buff)
 {
-    static char        *str;
-	char 				*c;
-	
+	int	bytes_read;
+
+	bytes_read = 1;
+	while (!ft_strchr(read_buff, '\n') && bytes_read != 0)
+	{
+		bytes_read = read(fd, read_buff, BUFFER_SIZE);
+		if (bytes_read < 0)
+		{
+			free(read_buff);
+			free(stock_buff);
+			return (NULL);
+		}
+		read_buff[bytes_read] = '\0';
+		if (bytes_read)
+			stock_buff = ft_strjoin(stock_buff, read_buff);
+		if (!ft_strlen(stock_buff))
+		{
+			free(read_buff);
+			free(stock_buff);
+			return (NULL);
+		}
+	}
+	free(read_buff);
+	return (stock_buff);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*stock_buff;
+	char		*read_buff;
+	char		*line;
+	int			linelen;
+	int			i;
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return(NULL);
-	str = ft_read(fd, str);
-	if (!str)
 		return (NULL);
-	c = ft_rhyme(str);
-	str = next_rhyme(str);
-	return (c);
+	i = 0;
+	read_buff = malloc(BUFFER_SIZE + 1);
+	if (!read_buff)
+		return (NULL);
+	read_buff[0] = '\0';
+	stock_buff = get_line(fd, stock_buff, read_buff);
+	if (!stock_buff)
+		return (NULL);
+	line = strchr_n_split(stock_buff);
+	linelen = ft_strlen(line);
+	while (stock_buff[linelen])
+		stock_buff[i++] = stock_buff[linelen++];
+	stock_buff[i] = '\0';
+	return (line);
 }
-/*
-int main()
-{
-    int fd;
-
-    fd = open("text.txt", O_RDONLY);
-    char *line = get_next_line(fd);
-    
-    while (line)
-    {
-        printf("%s", line);
-        free(line);
-        line = get_next_line(fd);
-    }
-
-    close(fd);
-
-    return 0;
-}
-*/

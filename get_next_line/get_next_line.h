@@ -6,27 +6,24 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:57:20 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/01/08 15:20:24 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/01/12 21:38:57 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# include<stdlib.h>
-# include<fcntl.h>
-# include<stdio.h>
-# include<unistd.h>
+# include <stdlib.h>
+# include <unistd.h>
+
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
+#  define BUFFER_SIZE 10
 # endif
 
-char    *get_next_line(int fd);
-char	*ft_strjoin(char *s1, char *s2);
-int 	ft_strchr(const char *s, int c);
+char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
-char	*ft_rhyme(char *s);
-char	*ft_read(int fd, char *str);
-char	*next_rhyme(char *str);
-char	*ft_strdup(const char *s1);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
+size_t	ft_strlcpy(char *dst, char *src, size_t size);
+char	*ft_strdup(char *s);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(const char *s, int c);
+
 #endif
