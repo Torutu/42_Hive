@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:57:20 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/01/12 21:38:57 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/01/18 09:39:39 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);

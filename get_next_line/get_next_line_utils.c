@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 16:40:11 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/01/12 21:39:15 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/01/18 09:20:57 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ char	*ft_strdup(char *s)
 		return (NULL);
 	size = ft_strlen(s) + 1;
 	str = malloc(size);
-	if (str == NULL)
+	if (!str)
 	{
-		free(s);
+		free (s);
 		return (NULL);
 	}
 	ft_strlcpy(str, s, size);

@@ -6,71 +6,72 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:03:33 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/01/12 21:40:08 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/01/18 09:53:23 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*strchr_n_split(char *stock_buff)
+static char	*strchr_n_split(char *stocky)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	while (stock_buff[i] != '\0' && stock_buff[i++] != '\n')
+	while (stocky[i] != '\0' && stocky[i++] != '\n')
 		;
-	if (stock_buff[i] == '\0')
-		return (ft_strdup(stock_buff));
+	if (stocky[i] == '\0')
+		return (ft_strdup(stocky));
 	line = malloc(i + 1);
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (stock_buff[i] != '\n' && stock_buff[i] != '\0')
+	while (stocky[i] != '\n' && stocky[i] != '\0')
 	{
-		line[i] = stock_buff[i];
+		line[i] = stocky[i];
 		i++;
-		if (stock_buff[i] == '\n')
-			line[i] = stock_buff[i];
+		if (stocky[i] == '\n')
+			line[i] = stocky[i];
 	}
-	if (stock_buff[i] == '\n')
-		line[i] = stock_buff[i];
+	if (stocky[i] == '\n')
+		line[i] = stocky[i];
 	line[++i] = '\0';
 	return (line);
 }
 
-static char	*get_line(int fd, char *stock_buff, char *read_buff)
+static char	*get_line(int fd, char *stocky, char *buffy)
 {
 	int	bytes_read;
 
 	bytes_read = 1;
-	while (!ft_strchr(read_buff, '\n') && bytes_read != 0)
+	while (!ft_strchr(buffy, '\n') && bytes_read != 0)
 	{
-		bytes_read = read(fd, read_buff, BUFFER_SIZE);
+		bytes_read = read(fd, buffy, BUFFER_SIZE);
 		if (bytes_read < 0)
 		{
-			free(read_buff);
-			free(stock_buff);
+			free(buffy);
+			free(stocky);
 			return (NULL);
 		}
-		read_buff[bytes_read] = '\0';
+		buffy[bytes_read] = '\0';
 		if (bytes_read)
-			stock_buff = ft_strjoin(stock_buff, read_buff);
-		if (!ft_strlen(stock_buff))
+			stocky = ft_strjoin(stocky, buffy);
+		if (!ft_strlen(stocky))
 		{
-			free(read_buff);
-			free(stock_buff);
+			free(buffy);
+			free(stocky);
 			return (NULL);
 		}
 	}
-	free(read_buff);
-	return (stock_buff);
+	free(buffy);
+	buffy = NULL;
+	return (stocky);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*stock_buff;
-	char		*read_buff;
+	static char	*stocky;
+	char		*buffy;
 	char		*line;
 	int			linelen;
 	int			i;
@@ -78,17 +79,19 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	i = 0;
-	read_buff = malloc(BUFFER_SIZE + 1);
-	if (!read_buff)
+	buffy = malloc(BUFFER_SIZE + 1);
+	if (!buffy)
 		return (NULL);
-	read_buff[0] = '\0';
-	stock_buff = get_line(fd, stock_buff, read_buff);
-	if (!stock_buff)
+	buffy[0] = '\0';
+	stocky = get_line(fd, stocky, buffy);
+	if (!stocky)
 		return (NULL);
-	line = strchr_n_split(stock_buff);
+	line = strchr_n_split(stocky);
+	if (!line)
+		return (NULL);
 	linelen = ft_strlen(line);
-	while (stock_buff[linelen])
-		stock_buff[i++] = stock_buff[linelen++];
-	stock_buff[i] = '\0';
+	while (stocky[linelen])
+		stocky[i++] = stocky[linelen++];
+	stocky[i] = '\0';
 	return (line);
 }
