@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:44:36 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/02/12 14:03:09 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:18:02 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         return(1);
     else if (argc == 2)
         argv = split(argv[1], ' ');
-    init_stack_a(&a, argc + 1);
+    init_stack_a(&a, argv + 1);
     if (!stack_sorted(a))
     {
         if (stack_len(a) == 2)
