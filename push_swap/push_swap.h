@@ -27,5 +27,6 @@ typedef struct s_stack_node
     struct  s_stack_node *next;
     struct  s_stack_node *prev;
 }   t_stack_node;
+int	ft_isdigit(int c);
 
 #endif
