@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   is.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 15:27:13 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/02/29 13:07:28 by walnaimi         ###   ########.fr       */
+/*   Created: 2024/02/29 12:35:04 by walnaimi          #+#    #+#             */
+/*   Updated: 2024/02/29 12:37:44 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     stack_len(t_stack_node *stack)
+int ft_isdigit(char c)
 {
-    int count;
-    
-    if (!stack)
-        return(0);
-    count = 0;
-    while(stack)
-    {
-        stack = stack->next;
-        count++;
-    }
-    return (count);
+    if (c <= '9' && c >= '0')
+        return (1);
+    return (0);
 }

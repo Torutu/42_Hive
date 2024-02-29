@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 15:27:13 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/02/29 13:07:28 by walnaimi         ###   ########.fr       */
+/*   Created: 2024/02/20 16:24:36 by walnaimi          #+#    #+#             */
+/*   Updated: 2024/02/29 13:07:26 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include    "push_swap.h"
 
-int     stack_len(t_stack_node *stack)
+static  void    swap(t_stack_node   **head)
 {
-    int count;
-    
-    if (!stack)
-        return(0);
-    count = 0;
-    while(stack)
-    {
-        stack = stack->next;
-        count++;
-    }
-    return (count);
+    if (!head || (*head)->next)
+        return;
+    *head = (*head)->next;
+    (*head)->prev->prev = *head;
+    (*head)->prev->next = (*head)->next;
+    if ((*head)->next)
+        (*head)->next->prev = (*head)-> prev;
+    (*head)->next = (*head)->prev;
+    (*head)->prev = NULL;
 }
