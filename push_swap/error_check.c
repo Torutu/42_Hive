@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:35 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/02/19 15:43:28 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:53:35 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 int error_duplicate(t_stack_node *a, int n)
 {
