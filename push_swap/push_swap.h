@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:30 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/03/04 19:54:14 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:20:28 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void    pa(t_stack_node **a, t_stack_node **b, bool print);
 void    pb(t_stack_node **b, t_stack_node **a, bool print);
 //init_a_to_b
 void    current_index(t_stack_node *stack);
+void    set_cheapest(t_stack_node *stack);
+void    init_nodes_a(t_stack_node *a, t_stack_node *b);
 
 #endif
