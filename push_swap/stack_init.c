@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:08 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/02/29 17:17:46 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:14:42 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,35 @@ void    init_stack_a(t_stack_node **a, char **argv)
             free_errors(a);
         append_node(a, (int)n);
         i++;
+    }
+}
+
+t_stack_node    *get_cheapest(t_stack_node *stack)
+{
+    if (!stack)
+        return (NULL);
+    while (stack)
+    {
+        if (stack->cheapest)
+            return (stack);
+        stack = stack->next;
+    }
+    return (NULL);
+}
+
+void    prep_for_push(t_stack_node **stack,
+                        t_stack_node *top_node,
+                        char stack_name)
+{
+    while (*stack != top_node)
+    {
+        if (stack_name == 'a')
+        {
+            if (top_node->above_median)
+                ra(stack, false);
+            else
+                rra(stack, false);
+        }
+    else if (stack_name)
     }
 }
