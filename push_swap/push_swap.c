@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:44:36 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/02/20 16:18:02 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:00:41 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
         else if (stack_len(a) == 3)
             sort_three(&a);
         else 
-            sort_stack(&a, &b);
+            sort_stacks(&a, &b);
     }
     free_stack(&a);
     return (0);

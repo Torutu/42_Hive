@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:08 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/03/07 14:14:42 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:57:08 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static long ft_atol(const char *s)
     sign = 1;
     while (*s == ' ' || *s == '\t' || *s == '\n' || \
             *s == '\r' || *s == '\f' || *s == '\v')
-        *s++;
+        s++;
     if (*s == '-' || *s == '+')
     {
         if (*s == '-')
@@ -104,6 +104,12 @@ void    prep_for_push(t_stack_node **stack,
             else
                 rra(stack, false);
         }
-    else if (stack_name)
+        else if (stack_name == 'b')
+        {
+            if (top_node->above_median)
+                rb(stack, false);
+            else
+                rrb(stack, false);
+        }
     }
 }

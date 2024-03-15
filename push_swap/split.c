@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:18 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/03/04 12:52:00 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:10:19 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static  char    *get_next_word(char *s, char c)
     if (!next_word)
         return (NULL);
     while ((s[cursor] != c) && s[cursor])
-        next_word[i++] = s[cursor];
+        next_word[i++] = s[cursor++];
     next_word[i] = '\0';
     return (next_word);
 }
@@ -70,7 +70,7 @@ char    **split(char *s, char   c)
     words_count = count_words(s, c);
     if (!words_count)
         exit(1);
-    result_array = malloc(size(char *) * (size_t)(words_count + 2));
+    result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
     if (!result_array)
         return (NULL);
     while (words_count-- >= 0)
@@ -81,7 +81,7 @@ char    **split(char *s, char   c)
             if (!result_array[i])
                 return (NULL);
             result_array[i++][0] = '\0';
-            continue;
+            continue ;
         }
         result_array[i++] = get_next_word(s, c);
     }

@@ -6,7 +6,7 @@
 /*   By: walnaimi <walnaimi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:27:35 by walnaimi          #+#    #+#             */
-/*   Updated: 2024/03/07 14:01:57 by walnaimi         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:12:41 by walnaimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,11 @@ int error_duplicate(t_stack_node *a, int n)
 {
     if  (!a)
         return(0);
+    while(a)
     {
-        while(a)
-        {
-            if(a->nbr == n)
-                return(1);
-            a = a->next;
-        }
+        if(a->nbr == n)
+            return(1);
+        a = a->next;
     }
     return (0);
 }
@@ -56,7 +54,7 @@ void    free_stack(t_stack_node **stack)
     t_stack_node    *current;
 
     if(!stack)
-        return (0);
+        return ;
     current = *stack;
     while(current)
     {
