@@ -1,21 +1,5 @@
 #include "fractol.h"
 
-void	ene(t_fractol *f)
-{
-	mlx_close_window(f->mlx);
-	mlx_delete_image(f->mlx, f->img);
-	mlx_terminate(f->mlx);
-	exit(-1);
-}
-void	errormsg(t_fractol *f)
-{
-	ft_printf("./fractol [fractal] (if julia[x][y]) [color]\n");
-	ft_printf("fractals = mandel , julia\n");
-	ft_printf("colors   = fire , water, earth\n");
-	ft_printf("for julia pick a small number\n");
-	ene(f);
-}
-
 void my_mlx_init(t_fractol *f)
 {
 	f->mlx = mlx_init(WIDTH, HEIGHT, "fractol", true);

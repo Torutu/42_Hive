@@ -1,6 +1,15 @@
 #include "fractol.h"
 #include <stdio.h>
 
+void keyhook(mlx_key_data_t keydata, void *f)
+{
+	t_fractol *nf;
+
+	nf = f;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+			ene(nf);
+}
+
 void	scrollhook(double xdelta, double ydelta, void *f)
 {
 	t_fractol *nf;

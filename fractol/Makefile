@@ -1,5 +1,5 @@
 # Variables
-NAME = test
+NAME = fractol
 LIBMLX    := ./MLX42
 HEADERS    := -I $(LIBMLX)/include
 
@@ -15,7 +15,7 @@ SRCS = fractol.c \
 	   color_group.c \
 	   hooks.c \
 	   ft_atof.c \
-
+	   error.c \
 
 OBJS= $(SRCS:.c=.o)
 
@@ -38,11 +38,11 @@ libmlx:
 
 # Compile object files
 %.o: %.c
-	cc -Wall -Wextra -Werror -c -fsanitize=address -g $< -o $@
+	cc -Wall -Wextra -Werror -c -g $< -o $@
 
 # Link the final executable
 $(NAME): $(OBJS) $(LIBFT) $(PRINTF)
-	cc -Wall -Wextra -Werror -fsanitize=address -g $(OBJS) $(LIBS) $(LIBFT) $(PRINTF) $(HEADERS) -o $@
+	cc -Wall -Wextra -Werror -g $(OBJS) $(LIBS) $(LIBFT) $(PRINTF) $(HEADERS) -o $@
 
 # Clean up object files and libmlx build directory
 clean:

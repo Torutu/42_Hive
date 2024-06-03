@@ -70,6 +70,8 @@ typedef struct s_fractol
 	double			size;
 }              t_fractol;
 
+//----------------------------error.c
+void intro_msg(t_fractol *f);
 void ene(t_fractol *f);
 void init(t_fractol *f);
 //----------------------------maf_utils.c
@@ -98,7 +100,8 @@ int rgba(int r, int g, int b, int a);
 //----------------------------color_group.c
 void color_pallet(int color_num,t_fractol *f);
 //----------------------------hooks.c
-void	scrollhook(double xdelta, double ydelta, void *f);
+void scrollhook(double xdelta, double ydelta, void *f);
+void keyhook(mlx_key_data_t keydata, void *f);
 //----------------------------atof.c
 double ft_atof(const char *str);
 
