@@ -4,6 +4,7 @@
 void	check_colors(char color,t_fractol *f)
 {
 	int color_type;
+	color_type = 0;
 	if ('f' == color)
 	{
 		color_type = 1;
@@ -21,8 +22,8 @@ void	check_colors(char color,t_fractol *f)
 	}
 	else
 	{
-		color = 0;
-		ene(f);
+		//color = 0;
+		intro_msg;
 	}
 	color_pallet(color_type,f);
 }
@@ -46,5 +47,6 @@ void	check_args(t_fractol *f, char **av, int ac)
 		check_colors(c,f);
 	}
 	else
-		intro_msg(f);
+		intro_msg;
+
 }

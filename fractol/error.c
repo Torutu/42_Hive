@@ -13,13 +13,13 @@ void ene(t_fractol *f)
 	exit(-1);
 }
 
-void intro_msg(t_fractol *f)
+void intro_msg(void)
 {
 	ft_printf("*********************************************\n");
 	ft_printf("./fractol mandel [color]\n");
 	ft_printf("./fractol julia [x] [y] [color]\n");
 	ft_printf("colors : f = fire | w = water | e = earth\n");
 	ft_printf("*********************************************\n");
-	ene(f);
+	exit(-1);
 }
 
