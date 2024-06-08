@@ -1,5 +1,8 @@
 NAME = libft.a
 
+COLOE_GREEN := \033[0;32m
+COLOR_RESET := \033[0m
+
 SOURCES = \
 		  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		  ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
@@ -20,23 +23,27 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar -r $@ $?
+	@ar -r $@ $?
+	@echo "$(COLOR_GREEN)Libft is compiled$(COLOR_RESET)"
 
 bonus: .bonus
 
 .bonus: $(BOBJECTS)
-	ar -rcs $(NAME) $(BOBJECTS)
+	@ar -rcs $(NAME) $(BOBJECTS)
 	@touch .bonus
+	@echo "Libft bonus is compiled"
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $?
+	@$(CC) -c $(CFLAGS) $?
 
 clean:
-	rm -f $(OBJECTS) $(BOBJECTS)
+	@rm -f $(OBJECTS) $(BOBJECTS)
 	@rm -rf .bonus bonus
+	@echo "Cleaned up"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "Fully cleaned up"
 
 re: fclean all
 
