@@ -67,7 +67,8 @@ typedef struct s_fractol
 	int			iter;
 	int			zoom_in_count;
 	int			zoom_out_count;
-	double			size;
+	double		size;
+	int			inted;
 }              t_fractol;
 
 //----------------------------error.c
@@ -81,14 +82,13 @@ void	calculate_offsets(t_fractol *f);
 double	scale(double unscaled, double old_max, double new_min, double new_max);
 //----------------------------check_n_strings.c
 void check_args(t_fractol *f, char **av, int ac);
-void check_colors(char color,t_fractol *f);
+void check_colors(char *color,t_fractol *f);
 //----------------------------draw.c
 void drawhook(void *f);
 void draw_fractal(t_fractol *f);
 void type_check(t_fractol *f);
 void draw_mandel(t_fractol *f);
 void draw_julia(t_fractol *f);
-void draw_barn(t_fractol *f);
 //----------------------------colors.c
 void iter_check(int iter, t_fractol *f);
 //----------------------------rgba.c

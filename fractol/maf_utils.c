@@ -36,6 +36,5 @@ double scale(double unscaled, double old_max, double new_min, double new_max)
 	old_min = 0.0;
 	return ((new_max - new_min) * (unscaled - old_min) / (old_max - old_min)
 			+ new_min);
-//	return((new_max - new_min) * unscaled / old_max) + new_min;
 }
 

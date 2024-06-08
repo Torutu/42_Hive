@@ -24,10 +24,6 @@ void	draw_fractal(t_fractol *f)
 					{
 						draw_julia(f);
 					}
-					else if (f->type == 3)
-					{
-						draw_barn(f);
-					}
 					else
 					{
 						ene(f);
@@ -65,7 +61,6 @@ void draw_mandel(t_fractol *f)
 				iter_check(i,f);
 }
 
-
 void draw_julia(t_fractol *f)
 {
 			int32_t color;
@@ -80,11 +75,6 @@ void draw_julia(t_fractol *f)
                     break;
                 i++;
             }
-			/*printf("f->z.x =%lf\n",f->z.x);
-			printf("f->z.y =%lf\n",f->z.y);
-			printf("f->c.x =%lf\n",f->c.x);
-			printf("f->c.y =%lf\n",f->c.y);
-			printf("f->esc =%lf\n",f->esc);*/
 			if (i == f->iter)
 			{
 				color = 0x000000FF;
@@ -92,38 +82,4 @@ void draw_julia(t_fractol *f)
 			}
 			else
 				iter_check(i,f);
-}
-void draw_barn(t_fractol *f)
-{
-	f->z.x = 0.0;
-	f->z.y = 0.0;
-	int	i = 0;
-	while (i < f->iter)
-	{
-		double r = rand() % (1 + 1 - 0) + 0;
-		if (r < 0.01)
-		{
-			f->c.x = 0.0;
-			f->c.y = 0.16 * f->z.y;
-		}
-		else if (r < 0.86)
-		{
-			f->c.x = 0.85 * f->z.x + 0.04 * f->z.y;
-			f->c.y = -0.04 * f->z.x + 0.85 * f->z.y + 1.6;
-		}
-		else if (r < 0.93)
-		{
-			f->c.x = 0.2 * f->z.x - 0.26 * f->z.y;
-			f->c.y = 0.23 * f->z.x + 0.22 * f->z.y + 1.6;
-		}
-		else
-		{
-			f->c.x = -0.15 * f->z.x + 0.28 * f->z.y;
-			f->c.y = 0.26 * f->z.x + 0.24 * f->z.y + 0.44;
-		}
-		mlx_put_pixel(f->img, f->c.x, f->c.y, 0x000000FF);
-		f->z.x = f->c.x;
-		f->z.y = f->c.y;
-		i++;
-	}
 }

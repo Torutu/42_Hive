@@ -3,8 +3,11 @@
 void iter_check(int iter,t_fractol *f)
 {
 	uint32_t color;
+
 	color = 0;
+
 	int color_range;
+
 	color_range = f->iter / 5;
 
 	if (iter < color_range)

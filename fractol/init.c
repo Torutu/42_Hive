@@ -10,14 +10,14 @@ void my_mlx_init(t_fractol *f)
 		ene(f);
 }
 
-void color_count(t_fractol *f)
+/*void color_count(t_fractol *f)
 {
 	f->fcolor.color_count1 = 2;
 	f->fcolor.color_count2 = 4;
 	f->fcolor.color_count3 = 6;
 	f->fcolor.color_count4 = 8;
 	f->fcolor.color_count5 = 10;
-}
+}*/
 void init(t_fractol *f)
 {
 	f->esc =	   4;
@@ -39,6 +39,7 @@ void init(t_fractol *f)
 	f->iter =	   80;
 	f->zoom_in_count = 0;
 	f->zoom_out_count = 0;
+	f->inted = 1;
 	calculate_offsets(f);
 	if (WIDTH > HEIGHT)
 		f->max_dim = WIDTH;
