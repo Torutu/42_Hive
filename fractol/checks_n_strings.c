@@ -1,5 +1,4 @@
 #include "fractol.h"
-#include <stdio.h>
 
 void	check_colors(char *color,t_fractol *f)
 {

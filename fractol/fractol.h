@@ -1,7 +1,6 @@
 #ifndef FRACTOL_H
 #define FRACTOL_H
 
-#include <stdio.h>
 #include "./inc/libft/libft.h"
 #include "./inc/printf/ft_printf.h"
 #include "./MLX42/include/MLX42/MLX42.h"

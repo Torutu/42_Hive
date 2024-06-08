@@ -1,5 +1,4 @@
 #include "fractol.h"
-#include <stdio.h>
 
 void keyhook(mlx_key_data_t keydata, void *f)
 {
