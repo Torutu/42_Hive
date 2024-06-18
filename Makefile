@@ -1,62 +1,71 @@
-# Variables
-NAME = test
-LIBMLX    := ./MLX42
-HEADERS    := -I $(LIBMLX)/include
+CC := cc
+CFLAGS := -Wall -Wextra -Werror
+NAME := minishell
 
-LIBFT = ./inc/libft/libft.a
-PRINTF = ./inc/printf/libftprintf.a
+LIBFT := libft/libft.a
+INCL := -I headers/
+RL_PATH := ~/.brew/opt/readline/lib
 
-SRCS = fractol.c \
-       init.c \
-       checks_n_strings.c \
-       maf_utils.c \
-       draw.c \
-	   color.c \
-	   color_group.c \
+SRC :=			src/main.c \
+				src/builtins/echo.c \
+				src/builtins/export.c \
+				src/builtins/unset.c \
+				src/builtins/cd.c \
+				src/builtins/env.c \
+				src/builtins/exit.c \
+				src/builtins/builtin_utils.c \
+				src/builtins/builtins.c \
+				src/builtins/shelllevel.c \
+				src/builtins/pwd.c \
+				src/builtins/var_utils.c \
+				src/builtins/var_utils2.c \
+				src/builtins/var_utils3.c \
+				src/parsing/parser.c \
+				src/parsing/syntax_check.c \
+				src/parsing/syntax_check2.c \
+				src/parsing/parser_utils.c \
+				src/parsing/file_list_utils.c \
+				src/parsing/parser_struct_utils.c \
+				src/parsing/redirections.c \
+				src/parsing/heredoc.c \
+				src/parsing/heredoc_utils.c \
+				src/parsing/command.c \
+				src/parsing/arg_lst.c \
+				src/utils/white_spaces.c \
+				src/utils/errors.c \
+				src/utils/errors2.c \
+				src/utils/free_stuff.c \
+				src/utils/init_c_env.c \
+				src/execution/exe_cmds.c \
+				src/execution/exe_cmds2.c \
+				src/execution/exe_cmds3.c \
+				src/execution/exe_cmds4.c \
+				src/execution/execution_utils.c \
+				src/ctrls/ctrld.c \
+				src/ctrls/ctrl_utils.c \
+				src/parsing/dolar_handling.c \
+				src/parsing/dolar_handling1.c \
+				src/parsing/dolar_handling2.c \
+				src/parsing/dolar_handling3.c
 
+OBJ := $(patsubst %.c, %.o, $(SRC))
 
-OBJS= $(SRCS:.c=.o)
+all: $(NAME)
 
-LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $^ $(INCL) -lreadline -L $(RL_PATH)
 
-# Default target
-all: libmlx $(LIBFT) $(PRINTF) $(NAME)
-
-# Build libft
 $(LIBFT):
-	@make -C ./inc/libft
+	make -C ./libft
 
-# Build libftprintf
-$(PRINTF):
-	@make -C ./inc/printf
-
-# Build libmlx
-libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
-
-# Compile object files
-%.o: %.c
-	cc -Wall -Wextra -Werror -c -fsanitize=address -g $< -o $@
-
-# Link the final executable
-$(NAME): $(OBJS) $(LIBFT) $(PRINTF)
-	cc -Wall -Wextra -Werror -fsanitize=address -g $(OBJS) $(LIBS) $(LIBFT) $(PRINTF) $(HEADERS) -o $@
-
-# Clean up object files and libmlx build directory
 clean:
-	@rm -f $(OBJS)
-	@rm -rf $(LIBMLX)/build
-	@make clean -C ./inc/libft
-	@make clean -C ./inc/printf
+	rm -rf $(OBJ)
+	make -C ./libft/ clean
 
-# Full clean including the executable
 fclean: clean
-	@rm -f $(NAME)
-	@make fclean -C ./inc/libft
-	@make fclean -C ./inc/printf
+	make -C ./libft/ fclean
+	rm -rf $(NAME)
 
-# Rebuild everything
 re: fclean all
 
-.PHONY: all clean fclean re libmlx
-
+.PHONY: all clean fclean re		
