@@ -10,14 +10,6 @@ void my_mlx_init(t_fractol *f)
 		ene(f);
 }
 
-/*void color_count(t_fractol *f)
-{
-	f->fcolor.color_count1 = 2;
-	f->fcolor.color_count2 = 4;
-	f->fcolor.color_count3 = 6;
-	f->fcolor.color_count4 = 8;
-	f->fcolor.color_count5 = 10;
-}*/
 void init(t_fractol *f)
 {
 	f->esc =	   4;

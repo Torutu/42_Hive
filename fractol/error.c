@@ -5,11 +5,6 @@ void ene(t_fractol *f)
 	mlx_close_window(f->mlx);
 	mlx_delete_image(f->mlx, f->img);
 	mlx_terminate(f->mlx);
-/*	if (f)
-	{
-		free(f);
-		f = NULL;
-	}*/
 	exit(-1);
 }
 
