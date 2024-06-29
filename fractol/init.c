@@ -15,14 +15,13 @@ void init(t_fractol *f)
 	f->esc =	   4;
 	f->z.x =	   0;
 	f->z.y =	   0;
-	if (f->type == 1 || f->type == 3)
+	if (f->type == 1)
 	{
 		f->c.x =	   0;
 		f->c.y =	   0;
 	}
 	f->x   =	   0;
 	f->y   =	   0;
-	f->esc_value = 4;
 	f->zoom =	   1.0;
 	f->mlx =	   NULL;
 	f->img =       NULL;
