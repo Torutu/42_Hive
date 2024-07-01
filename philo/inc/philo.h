@@ -86,6 +86,9 @@ typedef struct s_data
 
 //------MAIN.C
 int		philosophising(int ac, char **av, t_data *data);
+//------UTILS.C
+void	print_msg(t_data *data, int id, char *msg);
+int		handle_1_philo(t_philo *philo);
 //------CHECK_ARGS_INIT.C
 void	check_args_init(int ac, char **av, t_data *data);
 int		ft_atoi(const char *str);
@@ -94,5 +97,22 @@ void	guide_msg();
 //------INIT.C
 int		init_data(t_data *data,int ac,char **av);
 int		malloc_data(t_data *data);
+int		init_philos(t_data *data);
+int		init_forks(t_data *data);
+//------GETS.C
+int		 get_num_philos(t_data *data);
+uint64_t get_start_time(t_data *data);
+t_state get_philo_state(t_philo *philo);
+bool	get_keep_iter(t_data *data);
 
+//------TIME.C
+u_int64_t get_time(void);
+void	ft_usleep(uint64_t sleep_time);
+
+//------MUNCH.C
+int	eat(t_philo *philo);
+void	update_last_meal_time(t_philo *philo);
+//------ZZZ.C
+void	set_philo_state(t_philo *philo, t_state state);
+void	set_keep_iterating(t_data *data, bool set_to);
 # endif
