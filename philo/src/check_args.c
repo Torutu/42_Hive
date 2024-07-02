@@ -39,7 +39,7 @@ static int	ft_is_all_num(int ac, char **av)
 	return (1);
 }
 
-void	check_args_init(int ac, char **av, t_data *data)
+void	check_args_init(int ac, char **av)
 {
 	if (!ft_is_all_num(ac,av))
 		guide_msg();

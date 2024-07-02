@@ -30,6 +30,16 @@ uint64_t	get_start_time(t_data *data)
 	return (time);
 }
 
+int		get_nb_meals_philo_had(t_philo *philo)
+{
+        int     nb_meals_had;
+
+        pthread_mutex_lock(&philo->mut_ate);
+        nb_meals_had = philo->ate;
+        pthread_mutex_unlock(&philo->mut_ate);
+        return (nb_meals_had);
+}
+
 t_state get_philo_state(t_philo *philo)
 {
 	t_state state;

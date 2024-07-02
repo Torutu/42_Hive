@@ -89,8 +89,10 @@ int		philosophising(int ac, char **av, t_data *data);
 //------UTILS.C
 void	print_msg(t_data *data, int id, char *msg);
 int		handle_1_philo(t_philo *philo);
+bool	nb_meals_option(t_data *data);
+void		free_data(t_data *data);
 //------CHECK_ARGS_INIT.C
-void	check_args_init(int ac, char **av, t_data *data);
+void	check_args_init(int ac, char **av);
 int		ft_atoi(const char *str);
 //------ERROR.C
 void	guide_msg();
@@ -104,7 +106,12 @@ int		 get_num_philos(t_data *data);
 uint64_t get_start_time(t_data *data);
 t_state get_philo_state(t_philo *philo);
 bool	get_keep_iter(t_data *data);
-
+int             get_nb_meals_philo_had(t_philo *philo);
+//------GETS_UTILS.C
+uint64_t get_die_time(t_data *data);
+uint64_t get_zzz_time(t_data *data);
+uint64_t get_eat_time(t_data *data);
+uint64_t get_last_eat_time(t_philo *philo);
 //------TIME.C
 u_int64_t get_time(void);
 void	ft_usleep(uint64_t sleep_time);
@@ -113,6 +120,23 @@ void	ft_usleep(uint64_t sleep_time);
 int	eat(t_philo *philo);
 void	update_last_meal_time(t_philo *philo);
 //------ZZZ.C
+int		ft_sleep(t_philo *philo);
 void	set_philo_state(t_philo *philo, t_state state);
 void	set_keep_iterating(t_data *data, bool set_to);
+//----- MUNCH_UTILS.C
+int take_forks(t_philo *philo);
+int     take_right_fork(t_philo *philo);
+int     take_left_fork(t_philo *philo);
+void    drop_right_fork(t_philo *philo);
+void    drop_left_fork(t_philo *philo);
+//-----THINK.C
+int	think(t_philo *philo);
+//-----ROUTINE.C
+void *routine(void *philo_p);
+//-----MONITOR.C
+void    *all_alive_routine(void *data_p);
+void    *all_full_routine(void *data_p);
+void    notify_all_philos(t_data *data);
+bool    philo_died(t_philo *philo);
+bool    is_philo_full(t_data *data, t_philo *philo);
 # endif
