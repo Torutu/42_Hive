@@ -21,7 +21,7 @@ void	print_instruction(void)
 	printf("(optional argument)\n");
 	printf("Example:\n\n");
 	printf("./philo 4 800 200 200 5\n\n");
-	printf("nb_philos: 1-200\n");
+	printf("nb_philos: 1+\n");
 	printf("time_to_die: 60+\n");
 	printf("time_to_eat: 60+\n");
 	printf("time_to_sleep: 60+\n");

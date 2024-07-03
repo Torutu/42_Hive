@@ -42,5 +42,5 @@ fclean: clean
 	$(RM) $(NAME) 
 
 re: fclean all
-#-g #-fsanitize=thread
+
 .PHONY: all clean fclean re

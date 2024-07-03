@@ -73,9 +73,7 @@ void	*all_full_routine(void *data_p)
 	}
 	return (NULL);
 }
-// usleep(200);
 
-//  || (get_philo_state(&philos[i]) == DEAD
 void	*all_alive_routine(void *data_p)
 {
 	int		i;
@@ -102,4 +100,3 @@ void	*all_alive_routine(void *data_p)
 	}
 	return (NULL);
 }
-// usleep(200);

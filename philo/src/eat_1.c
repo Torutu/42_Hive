@@ -49,10 +49,3 @@ int	eat(t_philo *philo)
 	drop_forks(philo);
 	return (0);
 }
-
-// void	print_nb_full_p(t_data *data)
-// {
-// 	pthread_mutex_lock(&data->mut_print);
-// 	printf("%d FULL(%d) PHILOS\n", data->nb_full_p, data->nb_meals);
-// 	pthread_mutex_unlock(&data->mut_print);
-// }

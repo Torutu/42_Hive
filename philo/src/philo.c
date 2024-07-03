@@ -70,12 +70,6 @@ int	philosophers(int argc, char **argv)
 	return (0);
 }
 
-void	leaks(void)
-{
-	system("leaks philo");
-}
-
-	// atexit(&leaks);
 int	main(int argc, char **argv)
 {
 	if (check_input(argc, argv) != 0)
@@ -88,8 +82,3 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-// fix printing
-// fix philo_died()
-// fix routing order MAYBE
-// WHAT SHOULD IT DO WHEN NB_MEALS IS <= 0?
-// is it possible to print in smaller periods?

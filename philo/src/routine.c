@@ -12,7 +12,6 @@
 
 #include "../include/philo.h"
 
-//philo_died(philo) || 
 void	*routine(void *philo_p)
 {
 	t_philo	*philo;
