@@ -1,25 +1,37 @@
-#include "../inc/philo.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   time.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: walnaimi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/03 15:38:42 by walnaimi          #+#    #+#             */
+/*   Updated: 2024/07/03 15:41:13 by walnaimi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    wait_until(u_int64_t wakeup_time)
+#include "../include/philo.h"
+
+void	wait_until(u_int64_t wakeup_time)
 {
-        int                     margin;
-        u_int64_t       time;
+	int			margin;
+	u_int64_t	time;
 
-        margin = 5;
-        while (1)
-        {
-                time = get_time();
-                if (wakeup_time <= time + margin)
-                {
-                        while (wakeup_time > time)
-                                time = get_time();
-                        break ;
-                }
-                else
-                {
-                        usleep(1000 * (wakeup_time - time - margin));
-                }
-        }
+	margin = 5;
+	while (1)
+	{
+		time = get_time();
+		if (wakeup_time <= time + margin)
+		{
+			while (wakeup_time > time)
+				time = get_time();
+			break ;
+		}
+		else
+		{
+			usleep(1000 * (wakeup_time - time - margin));
+		}
+	}
 }
 
 void	ft_usleep(uint64_t sleep_time)
@@ -31,11 +43,11 @@ void	ft_usleep(uint64_t sleep_time)
 		usleep(500);
 }
 
-u_int64_t get_time(void)
+u_int64_t	get_time(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
 
-	if(gettimeofday(&tv, NULL))
+	if (gettimeofday(&tv, NULL))
 		return (0);
 	return ((tv.tv_sec * (u_int64_t)1000) + (tv.tv_usec / 1000));
 }

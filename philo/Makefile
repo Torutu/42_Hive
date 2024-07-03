@@ -1,42 +1,46 @@
+
 NAME = philo
 CC = cc
 RM = rm -rf
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC_DIR = src/
+OBJ_DIR = objects/
 
-SRCS =  $(SRC_DIR)main.c \
-        $(SRC_DIR)check_args.c \
-        $(SRC_DIR)eat_utils.c \
-        $(SRC_DIR)error.c \
-        $(SRC_DIR)gets.c \
-        $(SRC_DIR)gets_utils.c \
-        $(SRC_DIR)monitor.c \
-        $(SRC_DIR)munch.c \
-        $(SRC_DIR)routine.c \
-        $(SRC_DIR)set.c \
-        $(SRC_DIR)think.c \
-        $(SRC_DIR)time.c \
-        $(SRC_DIR)utils.c \
-        $(SRC_DIR)zzz.c
+SRC =	philo \
+    	parse \
+    	init_data \
+    	routine \
+    	time \
+		utils \
+    	monitor \
+       	eat_1 \
+    	eat_2 \
+    	sleep \
+    	think \
+    	getters_1 \
+    	getters_2 \
+    	setters
 
-OBJS = $(SRCS:.c=.o)
+SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC)))
+
+OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
 
 all: $(NAME)
 
-$(SRC_DIR)%.o: $(SRC_DIR)%.c
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c 
+	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) 
 
 re: fclean all
-
+#-g #-fsanitize=thread
 .PHONY: all clean fclean re
-

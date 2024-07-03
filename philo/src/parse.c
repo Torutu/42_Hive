@@ -36,7 +36,7 @@ int	wrong_input_check(int argc, char **argv)
 	i = 1;
 	if (argc == 6 && ft_atoi(argv[5]) <= 0)
 		return (WRONG_INPUT);
-	if (ft_atoi(argv[i]) < 1 || ft_atoi(argv[i]) > 200)
+	if (ft_atoi(argv[i]) < 1)
 		return (WRONG_INPUT);
 	while (++i < 5)
 	{

@@ -1,4 +1,16 @@
-#include "../inc/philo.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: walnaimi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/03 15:38:51 by walnaimi          #+#    #+#             */
+/*   Updated: 2024/07/03 15:38:52 by walnaimi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/philo.h"
 
 int	handle_1_philo(t_philo *philo)
 {
@@ -8,42 +20,42 @@ int	handle_1_philo(t_philo *philo)
 	return (1);
 }
 
-bool nb_meals_option(t_data *data)
+bool	nb_meals_option(t_data *data)
 {
-	if (data->num_of_meal > 0)
+	if (data->nb_meals > 0)
 		return (true);
 	return (false);
 }
 
-void    free_data(t_data *data)
+void	free_data(t_data *data)
 {
-        int     i;
-        int     nb_philos;
+	int	i;
+	int	nb_philos;
 
-        nb_philos = get_num_philos(data);
-        i = -1;
-        while (++i < nb_philos)
-        {
-                pthread_mutex_destroy(&data->forks[i]);
-                pthread_mutex_destroy(&data->philos[i].mut_state);
-                pthread_mutex_destroy(&data->philos[i].mut_ate);
-                pthread_mutex_destroy(&data->philos[i].mut_last_eat_time);
-        }
-        pthread_mutex_destroy(&data->mut_die_t);
-        pthread_mutex_destroy(&data->mut_eat_t);
-        pthread_mutex_destroy(&data->mut_zzz_t);
-        pthread_mutex_destroy(&data->mut_nb_ph);
-        pthread_mutex_destroy(&data->mut_print);
-        pthread_mutex_destroy(&data->mut_keep_iter);
-        pthread_mutex_destroy(&data->mut_start_time);
-        free(data->philo_ths);
-        free(data->philos);
-        free(data->forks);
+	nb_philos = get_nb_philos(data);
+	i = -1;
+	while (++i < nb_philos)
+	{
+		pthread_mutex_destroy(&data->forks[i]);
+		pthread_mutex_destroy(&data->philos[i].mut_state);
+		pthread_mutex_destroy(&data->philos[i].mut_nb_meals_had);
+		pthread_mutex_destroy(&data->philos[i].mut_last_eat_time);
+	}
+	pthread_mutex_destroy(&data->mut_die_t);
+	pthread_mutex_destroy(&data->mut_eat_t);
+	pthread_mutex_destroy(&data->mut_sleep_t);
+	pthread_mutex_destroy(&data->mut_nb_philos);
+	pthread_mutex_destroy(&data->mut_print);
+	pthread_mutex_destroy(&data->mut_keep_iter);
+	pthread_mutex_destroy(&data->mut_start_time);
+	free(data->philo_ths);
+	free(data->philos);
+	free(data->forks);
 }
 
 void	print_msg(t_data *data, int id, char *msg)
 {
-	uint64_t time;
+	uint64_t	time;
 
 	time = get_time() - get_start_time(data);
 	pthread_mutex_lock(&data->mut_print);
@@ -52,7 +64,7 @@ void	print_msg(t_data *data, int id, char *msg)
 	pthread_mutex_unlock(&data->mut_print);
 }
 
-void print_mut(t_data *data, char *msg)
+void	print_mut(t_data *data, char *msg)
 {
 	pthread_mutex_lock(&data->mut_print);
 	printf("%s\n", msg);
