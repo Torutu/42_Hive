@@ -10,6 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+ * drop_forks: Releases the forks held by a philosopher.
+ *
+ * update_last_meal_time: Updates the last meal time for a philosopher.
+ *
+ * update_nb_meals_had: Increments the number of meals a philosopher has had.
+ *
+ * sleep_for_eating: Pauses execution for the time it takes a philosopher to eat.
+ *
+ * eat: Manages the entire eating process for a philosopher, including taking forks, setting state to eating,
+ *   printing messages, updating last meal time, sleeping for the eating duration, updating the number of meals had, and dropping forks.
+ */
+
 #include "../include/philo.h"
 
 void	drop_forks(t_philo *philo)

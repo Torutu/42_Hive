@@ -12,6 +12,25 @@
 
 #include "../include/philo.h"
 
+/*
+ * This file contains functions for initializing data structures and resources in a philosopher simulation.
+ *
+ * - init_forks: Initializes mutexes for each fork and assigns them to philosophers.
+ *   - Each philosopher is assigned two forks based on their position in the array.
+ *
+ * - init_philos: Initializes each philosopher with necessary data and mutexes for state, meal count, and last meal time.
+ *
+ * - malloc_data: Allocates memory for philosopher data structures, forks (mutexes), and thread identifiers.
+ *
+ * - init_data: Initializes simulation parameters and mutexes for time-related variables and synchronization.
+ *   - Parses command-line arguments to set the number of philosophers, time parameters, and optional meal count.
+ *   - Initializes mutexes for time parameters and synchronization flags.
+ *   - Calls malloc_data to allocate memory for data structures.
+ *
+ * Each function ensures proper initialization and allocation of resources necessary for running the philosopher simulation,
+ * while using mutex locks to maintain thread safety and prevent data races during concurrent execution.
+ */
+
 int	init_forks(t_data *data)
 {
 	int		i;

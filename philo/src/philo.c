@@ -12,6 +12,16 @@
 
 #include "../include/philo.h"
 
+/*
+ * run_threads: starts threads for each philospher and monitor them.
+ * 
+ * join_threads: wait for all philosopher and monitoring threads to finish and ends.
+ *
+ * philosophers: Initializes the dats and runs it by calling run threads and end it with join threads.
+ *
+ * main: the program starts here. checks input then calls philosophers.
+ */
+
 int	run_threads(t_data *data)
 {
 	int	i;

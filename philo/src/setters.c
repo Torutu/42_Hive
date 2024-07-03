@@ -12,6 +12,17 @@
 
 #include "../include/philo.h"
 
+/*
+ * Functions for setting data values with thread safety.
+ *
+ * - set_keep_iterating: Sets the 'keep_iterating' flag in 't_data' structure to the specified boolean value.
+ *   - Ensures thread safety by locking 'mut_keep_iter' mutex before updating the flag and unlocking afterward.
+ *
+ * - set_philo_state: Sets the state of a philosopher ('philo') to the specified 'state'.
+ *   - Ensures thread safety by locking 'mut_state' mutex before updating the state if the philosopher is not DEAD,
+ *     and unlocks the mutex afterward.
+ */
+
 void	set_keep_iterating(t_data *data, bool set_to)
 {
 	pthread_mutex_lock(&data->mut_keep_iter);

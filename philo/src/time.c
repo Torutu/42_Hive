@@ -12,6 +12,17 @@
 
 #include "../include/philo.h"
 
+/*
+ * Functions for time management and thread synchronization:
+ *
+ * - wait_until: Waits until a specified wakeup time is reached, with a small margin for accuracy.
+ *               Uses usleep to pause execution until the time condition is met.
+ *
+ * - ft_usleep: Simulates a sleep delay by polling the current time until the specified sleep_time has elapsed.
+ *
+ * - get_time: Retrieves the current system time in milliseconds since the Unix epoch using gettimeofday().
+ */
+
 void	wait_until(u_int64_t wakeup_time)
 {
 	int			margin;

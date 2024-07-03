@@ -12,6 +12,23 @@
 
 #include "../include/philo.h"
 
+/*
+ * Functions for validating and printing instructions for the philosopher simulation.
+ *
+ * - print_instruction: Prints usage instructions and example for running the program.
+ *
+ * - wrong_input_check: Checks command-line arguments for valid numerical inputs and optional constraints.
+ *
+ * - ft_atoi: Converts a string to an integer, handling signs and whitespace characters.
+ *
+ * - is_input_digit: Checks if all command-line arguments are numeric digits.
+ *
+ * - check_input: Validates the number and format of command-line arguments for the simulation.
+ *   - Ensures correct input format and ranges for philosopher count, times, and optional meals count.
+ *
+ * Returns WRONG_INPUT if any validation fails, otherwise returns 0 for valid input.
+ */
+
 void	print_instruction(void)
 {
 	printf("\t\tWRONG INPUT!\n\n");

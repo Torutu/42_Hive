@@ -12,6 +12,18 @@
 
 #include "../include/philo.h"
 
+/*
+ * Function for simulating the life cycle of a philosopher and printing the number of meals eaten.
+ *
+ * - routine: Simulates the routine of a philosopher, including eating, sleeping, and thinking.
+ *   - Updates the last meal time and adjusts sleep time for even-numbered philosophers.
+ *   - Continues looping until the philosopher's state changes to DEAD.
+ *   - Calls eat, ft_sleep, and think functions in sequence.
+ *
+ * - print_nb_meals_had: Prints the number of meals a philosopher has eaten, synchronized with mutex locking.
+ *   - Retrieves and prints the philosopher's ID and the number of meals eaten.
+ */
+
 void	*routine(void *philo_p)
 {
 	t_philo	*philo;
