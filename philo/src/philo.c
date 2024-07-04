@@ -17,7 +17,7 @@
  * 
  * join_threads: wait for all philosopher and monitoring threads to finish and ends.
  *
- * philosophers: Initializes the dats and runs it by calling run threads and end it with join threads.
+ * philosophers: Initializes the datas and runs it by calling run threads and end it with join threads.
  *
  * main: the program starts here. checks input then calls philosophers.
  */
