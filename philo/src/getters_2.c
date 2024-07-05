@@ -13,7 +13,8 @@
 #include "../include/philo.h"
 
 /*
- * This file contains functions to safely retrieve time-related parameters in a philosopher simulation.
+ * This file contains functions to safely retrieve
+ * time-related parameters in a philosopher simulation.
  *
  * - get_die_time: Retrieves the time at which a philosopher should die.
  *
@@ -23,8 +24,10 @@
  *
  * - get_last_eat_time: Retrieves the last time a philosopher ate.
  *
- * Each function uses mutex locks to ensure thread-safe access to the shared data structures,
- * preventing race conditions and ensuring accurate time retrieval during concurrent execution.
+ * Each function uses mutex locks to ensure
+ * thread-safe access to the shared data structures,
+ * preventing race conditions and ensuring
+ * accurate time retrieval during concurrent execution.
  */
 
 uint64_t	get_die_time(t_data *data)

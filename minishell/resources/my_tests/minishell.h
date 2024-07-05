@@ -4,8 +4,7 @@
 
 # include <stdio.h>
 # include <unistd.h>
-# include "libft/libft.h"
-# include "libft.h"
+# include "./inc/libft/libft.h"
 
 typedef enum e_token_type
 {

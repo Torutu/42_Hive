@@ -13,20 +13,27 @@
 #include "../include/philo.h"
 
 /*
- * This file contains functions to safely access shared data in a philosopher simulation.
+ * This file contains functions to safely
+ * access shared data in a philosopher simulation.
  *
- * - get_keep_iter: Retrieves the boolean flag indicating whether the simulation should continue iterating.
+ * - get_keep_iter: Retrieves the boolean flag indicating
+ *   whether the simulation should continue iterating.
  *
- * - get_nb_philos: Retrieves the number of philosophers participating in the simulation.
+ * - get_nb_philos: Retrieves the number of philosophers
+ *   participating in the simulation.
  *
- * - get_philo_state: Retrieves the current state of a philosopher (e.g., eating, thinking, or dead).
+ * - get_philo_state: Retrieves the current state of
+ *   a philosopher (e.g., eating, thinking, or dead).
  *
- * - get_nb_meals_philo_had: Retrieves the number of meals a philosopher has consumed.
+ * - get_nb_meals_philo_had: Retrieves the number
+ *   of meals a philosopher has consumed.
  *
  * - get_start_time: Retrieves the start time of the simulation.
  *
- * Each function uses mutex locks to ensure thread-safe access to the shared data structures,
- * preventing race conditions and ensuring data integrity during concurrent execution.
+ * Each function uses mutex locks to ensure
+ * thread-safe access to the shared data structures,
+ * preventing race conditions and ensuring
+ * data integrity during concurrent execution.
  */
 
 bool	get_keep_iter(t_data *data)

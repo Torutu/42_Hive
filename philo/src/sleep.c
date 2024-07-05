@@ -16,11 +16,13 @@
  * Function for simulating the sleep state of a philosopher.
  *
  * - ft_sleep: Sets the philosopher's state to SLEEPING.
- *   - Checks if the philosopher has transitioned to the DEAD state during the sleep state setup.
+ *   - Checks if the philosopher has transitioned to the
+ *   DEAD state during the sleep state setup.
  *   - Prints a sleep message associated with the philosopher's ID.
  *   - Uses ft_usleep to simulate sleep for the specified sleep time.
  *
- * Returns 0 if sleep completes successfully, otherwise returns 1 if the philosopher transitions to the DEAD state.
+ * Returns 0 if sleep completes successfully,
+ * otherwise returns 1 if the philosopher transitions to the DEAD state.
  */
 
 int	ft_sleep(t_philo *philo)

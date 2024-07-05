@@ -17,7 +17,8 @@
  *
  * - is_philo_full: Checks if a philosopher has reached maximum meals.
  *
- * - philo_died: Checks if a philosopher has exceeded allowed time without eating.
+ * - philo_died: Checks if a philosopher
+ *   has exceeded allowed time without eating.
  *
  * - notify_all_philos: Sets all philosophers' states to DEAD.
  *
@@ -25,7 +26,8 @@
  *
  * - all_alive_routine: Monitors if any philosopher has died.
  *
- * These functions handle state checks, termination conditions, and synchronization in the philosopher simulation.
+ * These functions handle state checks, termination conditions,
+ * and synchronization in the philosopher simulation.
  */
 
 bool	is_philo_full(t_data *data, t_philo *philo)

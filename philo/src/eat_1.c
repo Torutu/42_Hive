@@ -19,8 +19,10 @@
  *
  * sleep_for_eating: Pauses execution for the time it takes a philosopher to eat.
  *
- * eat: Manages the entire eating process for a philosopher, including taking forks, setting state to eating,
- *   printing messages, updating last meal time, sleeping for the eating duration, updating the number of meals had, and dropping forks.
+ * eat: Manages the entire eating process for a philosopher,
+ * including taking forks, setting state to eating,
+ *   printing messages, updating last meal time,sleeping for the eating duration,
+ *   updating the number of meals had, and dropping forks.
  */
 
 #include "../include/philo.h"

@@ -16,10 +16,13 @@
  * Function for simulating the thinking state of a philosopher.
  *
  * - think: Sets the philosopher's state to THINKING.
- *   - Checks if the philosopher has transitioned to the DEAD state during the thinking state setup.
+ *   - Checks if the philosopher has transitioned to the DEAD
+ *   state during the thinking state setup.
  *   - Prints a thinking message associated with the philosopher's ID.
  *
- * Returns 0 if the thinking state setup completes successfully, otherwise returns 1 if the philosopher transitions to the DEAD state.
+ * Returns 0 if the thinking state setup completes
+ * successfully, otherwise returns 1 if the
+ * philosopher transitions to the DEAD state.
  */
 
 int	think(t_philo *philo)

@@ -15,19 +15,27 @@
 /*
  * Miscellaneous utility functions for the dining philosophers problem:
  *
- * - handle_1_philo: Handles the special case where there's only one philosopher.
- *                   Takes the left fork, sleeps for the die time, then sets the philosopher to DEAD state.
+ * - handle_1_philo: Handles the special case
+ *   where there's only one philosopher.
+ *                   Takes the left fork, sleeps
+ *                   for the die time, then sets the philosopher to DEAD state.
  *
  * - nb_meals_option: Checks if the number of meals option is enabled.
  *                    Returns true if data->nb_meals > 0, otherwise false.
  *
- * - free_data: Frees dynamically allocated memory and destroys mutexes used in t_data struct.
- *              Destroys mutexes for forks, philosopher states, meals had, last eat time, and other control mutexes.
+ * - free_data: Frees dynamically allocated memory
+ *   and destroys mutexes used in t_data struct.
+ *              Destroys mutexes for forks,
+ *              philosopher states, meals had,
+ *              last eat time, and other control mutexes.
  *
- * - print_msg: Prints a formatted message with timestamp, philosopher id, and message content.
- *              Uses mutex locking to ensure thread-safe printing if keep_iterating is true.
+ * - print_msg: Prints a formatted message with timestamp,
+ *   philosopher id, and message content.
+ *              Uses mutex locking to ensure thread-safe
+ *              printing if keep_iterating is true.
  *
- * - print_mut: Prints a simple message to stdout, protected by mutex to ensure thread safety.
+ * - print_mut: Prints a simple message to stdout,
+ *   protected by mutex to ensure thread safety.
  */
 
 int	handle_1_philo(t_philo *philo)

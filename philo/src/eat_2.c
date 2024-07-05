@@ -13,19 +13,23 @@
 #include "../include/philo.h"
 
 /*
- * This file contains functions related to managing the forks and eating process of a philosopher.
+ * This file contains functions related to managing the forks and 
+ * eating process of a philosopher.
  *
  * - drop_left_fork: Releases the left fork held by a philosopher.
  *
  * - drop_right_fork: Releases the right fork held by a philosopher.
  *
- * - take_left_fork: Attempts to take the left fork. Returns 1 if the philosopher has died or is in a dead state,
- *   otherwise locks the left fork and prints a message i	ndicating the action.
+ * - take_left_fork: Attempts to take the left fork.
+ *   Returns 1 if the philosopher has died or is in a dead state,
+ *   otherwise locks the left fork and prints a message indicating the action.
  *
- * - take_right_fork: Attempts to take the right fork. Returns 1 if the philosopher has died or is in a dead state,
+ * - take_right_fork: Attempts to take the right fork.
+ *   Returns 1 if the philosopher has died or is in a dead state,
  *   otherwise locks the right fork and prints a message indicating the action.
  *
- * - take_forks: Coordinates the process of a philosopher taking both forks needed to eat.
+ * - take_forks: 
+ *   Coordinates the process of a philosopher taking both forks needed to eat.
  *   - Handles special case for a single philosopher scenario.
  *   - Attempts to take the right fork first, then the left fork.
  *   - If taking the left fork fails, releases the right fork.

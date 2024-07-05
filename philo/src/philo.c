@@ -15,9 +15,11 @@
 /*
  * run_threads: starts threads for each philospher and monitor them.
  * 
- * join_threads: wait for all philosopher and monitoring threads to finish and ends.
+ * join_threads: wait for all philosopher and
+ * monitoring threads to finish and ends.
  *
- * philosophers: Initializes the datas and runs it by calling run threads and end it with join threads.
+ * philosophers: Initializes the datas and
+ * runs it by calling run threads and end it with join threads.
  *
  * main: the program starts here. checks input then calls philosophers.
  */
@@ -91,4 +93,3 @@ int	main(int argc, char **argv)
 		return (MALLOC_ERROR);
 	return (0);
 }
-
