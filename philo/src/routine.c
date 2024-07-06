@@ -23,10 +23,6 @@
  *   - Continues looping until the philosopher's state changes to DEAD.
  *   - Calls eat, ft_sleep, and think functions in sequence.
  *
- * - print_nb_meals_had: Prints the number of meals a
- *   philosopher has eaten, synchronized with mutex locking.
- *   - Retrieves and prints the philosopher's
- *   ID and the number of meals eaten.
  */
 
 void	*routine(void *philo_p)
@@ -53,12 +49,3 @@ void	*routine(void *philo_p)
 	return (NULL);
 }
 
-void	print_nb_meals_had(t_philo *philo)
-{
-	t_data	*data;
-
-	data = philo->data;
-	pthread_mutex_lock(&data->mut_print);
-	printf("Philo %d ate %d times\n", philo->id, philo->nb_meals_had);
-	pthread_mutex_unlock(&data->mut_print);
-}

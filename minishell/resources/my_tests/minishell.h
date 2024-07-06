@@ -8,17 +8,17 @@
 
 typedef enum e_token_type
 {
-	COMMAND = 1,
-	OPTION = 2,
-	STRING = 3,
-	VARIABLE = 4,
-	EXIT_STATUS = 5,
-	RE_IN = 6,
-	RE_OUT = 7,
-	RE_APPEND = 8,
-	HERE_DOC = 9,
-	PIPE = 10,
-	PATH = 11,
+	COMMAND,
+	OPTION,
+	STRING,
+	VARIABLE,
+	EXIT_STATUS,
+	RE_IN,
+	RE_OUT,
+	RE_APPEND,
+	HERE_DOC,
+	PIPE,
+	PATH,
 }	t_token_type;
 
 typedef struct s_token

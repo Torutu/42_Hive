@@ -44,13 +44,7 @@ void	print_instruction(void)
 	printf("number_of_times_each_philosopher_must_eat ");
 	printf("(optional argument)\n");
 	printf("Example:\n\n");
-	printf("./philo 4 800 200 200 5\n\n");
-	printf("nb_philos: 1+\n");
-	printf("time_to_die: 60+\n");
-	printf("time_to_eat: 60+\n");
-	printf("time_to_sleep: 60+\n");
-	printf("number_of_times_each_philosopher_must_eat: ");
-	printf("0+\n");
+	printf("./philo 4 800 200 200 5\n");
 }
 
 int	wrong_input_check(int argc, char **argv)
