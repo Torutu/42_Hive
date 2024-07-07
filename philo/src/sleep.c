@@ -17,7 +17,7 @@
  *
  * - ft_sleep: Sets the philosopher's state to SLEEPING.
  *   - Checks if the philosopher has transitioned to the
- *   DEAD state during the sleep state setup.
+ *     DEAD state during the sleep state setup.
  *   - Prints a sleep message associated with the philosopher's ID.
  *   - Uses ft_usleep to simulate sleep for the specified sleep time.
  *
